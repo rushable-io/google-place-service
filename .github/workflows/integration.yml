@@ -1,0 +1,25 @@
+name: Integration Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  integration-tests:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.3'
+          tools: composer:v2
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: composer install --no-ansi --no-interaction --no-scripts --no-progress
+      - name: Execute tests via PHPUnit
+        env:
+          GOOGLE_PLACE_KEY: ${{ secrets.GOOGLE_PLACE_KEY }}
+        run: vendor/bin/phpunit --coverage-text
