@@ -1,0 +1,30 @@
+{
+    "name": "rushable/google-place-service",
+    "description": "A Laravel service wrapper for the Google Place Services ",
+    "authors": [{
+        "name": "Johnnie Zhang"
+    }],
+    "require": {
+        "php": "^7.3",
+        "guzzlehttp/guzzle": "^6.3.1",
+        "caseyamcl/guzzle_retry_middleware": "^2.6",
+        "ext-json": "*",
+        "illuminate/support": "^5.8|^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5.15|^8.4|^9.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rushable\\GooglePlace\\": "src",
+            "Rushable\\GooglePlace\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rushabl\\GooglePlace\\GoolePlaceServiceProvider"
+            ]
+        }
+    }
+}
