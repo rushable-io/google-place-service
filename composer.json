@@ -23,7 +23,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Rushabl\\GooglePlace\\GoolePlaceServiceProvider"
+                "Rushable\\GooglePlace\\GoolePlaceServiceProvider"
             ]
         }
     }
