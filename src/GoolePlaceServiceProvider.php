@@ -21,7 +21,7 @@ class GoolePlaceServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(GooglePlace::class, function ($app) {
-            return new GooglePlaceService($app('config')['googleplace.key']);
+            return new GooglePlaceService(config('googleplace.key));
         });
     }
 }
