@@ -80,7 +80,7 @@ class GooglePlaceService implements GooglePlace
     /**
      * {@inheritDoc}
      */
-    public function autocomplete(string $address, string $sessionToken = null): array
+    public function autocomplete(string $address, array $options = [], string $sessionToken = null): array
     {
         $predictions = [];
         $response = $this->client->get('place/autocomplete/json', [
@@ -88,7 +88,7 @@ class GooglePlaceService implements GooglePlace
                     'input'        => $address,
                     'sessionToken' => $sessionToken,
                     'types'        => 'address',
-                ],
+                ] + $options,
         ]);
 
         $response = $this->processResponse($response, __FUNCTION__);

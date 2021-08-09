@@ -19,4 +19,21 @@ class AutocompleteTest extends TestCase
         self::assertInstanceOf(Prediction::class, $match);
         self::assertEquals('10333 Harwin Drive, Houston, TX, USA', $match->description);
     }
+
+    public function testAutocompleteWithCountryRestriction(): void
+    {
+        $predictions = $this->googlePlace->autocomplete('1146 ON-21', ['components' => 'country:ca']);
+
+        self::assertIsArray($predictions);
+        self::assertCount(1, $predictions);
+
+        $match = $predictions[0];
+        self::assertInstanceOf(Prediction::class, $match);
+        self::assertEquals('1146 ON-21, Port Elgin, ON, Canada', $match->description);
+
+        $predictions = $this->googlePlace->autocomplete('1146 ON-21', ['components' => 'country:us']);
+
+        self::assertIsArray($predictions);
+        self::assertCount(0, $predictions);
+    }
 }

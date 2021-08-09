@@ -30,10 +30,11 @@ interface GooglePlace
      * Retrieve autocomplete result
      *
      * @param string $address
+     * @param array $options
      * @param string|null $sessionToken
      * @return array
      */
-    public function autocomplete(string $address, string $sessionToken = null): array;
+    public function autocomplete(string $address, array $options = [], string $sessionToken = null): array;
 
     /**
      * Calculate distance between two coordinates
