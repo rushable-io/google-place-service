@@ -64,8 +64,8 @@ class SearchBusinessTest extends TestCase
                     'state'                  => 'TX',
                     'country'                => 'US',
                     'zipcode'                => '77036',
-                    'latitude'               => 29.7059251,
-                    'longitude'              => -95.5468966,
+                    'latitude'               => 29.7059219,
+                    'longitude'              => -95.5469068,
                     'timezone'               => null,
                 ],
             ]
