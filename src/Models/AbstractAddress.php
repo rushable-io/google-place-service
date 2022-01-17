@@ -35,6 +35,7 @@ abstract class AbstractAddress
                         $route = $addressComponent['short_name'];
                         break;
                     case 'locality':
+                    case 'neighborhood':
                         $self->city = $addressComponent['short_name'];
                         break;
                     case 'administrative_area_level_1':
