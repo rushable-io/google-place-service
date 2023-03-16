@@ -24,7 +24,7 @@ abstract class AbstractAddress
         if ($addressComponents = Arr::get($address, 'address_components')) {
             $streetNumber = $route = '';
             foreach ($addressComponents as $addressComponent) {
-                switch ($addressComponent['types'][0]) {
+                switch (Arr::get($addressComponent, 'types.0')) {
                     case 'subpremise':
                         $self->unit = '#' . $addressComponent['short_name'];
                         break;
