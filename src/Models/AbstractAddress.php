@@ -25,6 +25,8 @@ abstract class AbstractAddress
             $streetNumber = $route = '';
             foreach ($addressComponents as $addressComponent) {
                 switch (Arr::get($addressComponent, 'types.0')) {
+
+                        // 比较确定的类型，优先选择
                     case 'subpremise':
                         $self->unit = '#' . $addressComponent['short_name'];
                         break;
@@ -46,6 +48,18 @@ abstract class AbstractAddress
                         break;
                     case 'postal_code':
                         $self->zipcode = $addressComponent['short_name'];
+                        break;
+
+                        // 比较模糊的类型，在上述字段找不到时的备选
+                    case 'administrative_area_level_3':
+                    case 'administrative_area_level_4':
+                        if (!$self->city) $self->city = $addressComponent['short_name'];
+                        break;
+                    case 'administrative_area_level_6':
+                        if (!$route) $route = $addressComponent['short_name'];
+                        break;
+                    case 'administrative_area_level_7':
+                        if (!$streetNumber) $streetNumber = $addressComponent['short_name'];
                         break;
                     default:
                         break;
